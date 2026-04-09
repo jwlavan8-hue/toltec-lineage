@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toltec Tools - Stalking Questions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">Toltec Tools</h1>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="meditations.html">Meditations</a></li>
+                    <li><a href="stalking-questions.html" class="active">Stalking Questions</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Stalking Questions</h2>
+                <p class="subtitle">Powerful questions to examine your beliefs and patterns</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="questions-intro">
+                    <p>Select a section below to receive a random stalking question. Use these questions as tools for self-inquiry and awareness.</p>
+                </div>
+
+                <div class="section-selector-container">
+                    <label for="sectionSelect" style="display: block; margin-bottom: 1rem; font-weight: 600; color: var(--black);">Choose a Section:</label>
+                    <select id="sectionSelect" class="section-select" onchange="selectSection()">
+                        <option value="">-- Select a Section --</option>
+                        <option value="1">SR1: A Warrior Chooses His Battle</option>
+                        <option value="2">SR2: By Striving for Simplicity</option>
+                        <option value="3">SR3: A Warrior Is Always Ready</option>
+                        <option value="4">SR4: Once He Has Entered Into Battle</option>
+                        <option value="5">SR5: Whenever Faced With Impossible Odds</option>
+                        <option value="6">SR6: A Warrior Always Compresses Time</option>
+                        <option value="7">SR7: A Stalker Never Reveals His Identity</option>
+                    </select>
+                </div>
+
+                <div id="questionDisplay" class="question-display" style="display: none;">
+                    <div class="question-category">
+                        <h3 id="sectionTitle"></h3>
+                        <div class="random-question-box">
+                            <p id="randomQuestion" class="random-question"></p>
+                        </div>
+                        <button class="btn" onclick="generateNewQuestion()" style="margin-top: 1.5rem;">Generate New Question</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Toltec Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sections = {
+            1: {
+                title: "SR1: A WARRIOR CHOOSES HIS BATTLE, AND THEREFORE WILL ALWAYS ASSESS BOTH THE CIRCUMSTANCES AND THE CONDITIONS OF EVERY BATTLE WITH THE UTMOST CARE.",
+                questions: [
+                    "What tensions brought about the challenge?",
+                    "Have you encountered this challenge before, maybe in a different form?",
+                    "How long has this been going on? What are you doing to create this challenge yourself? What is your role?",
+                    "What are you avoiding?",
+                    "What does the challenge do FOR you?",
+                    "Who is to blame? Is anyone guilty?",
+                    "In what way are your shortcomings involved in the challenge?",
+                    "What is the challenge/battle really about?",
+                    "To respond to the challenge, what course of action would make you feel good about yourself?",
+                    "What would be courageous and honest?",
+                    "What would increase your self-respect or self-esteem?",
+                    "What new act would uplift yourself and the world around you?",
+                    "What would be the impeccable thing to do?"
+                ]
+            },
+            2: {
+                title: "SR2: BY STRIVING FOR SIMPLICITY, A WARRIOR DISCARDS ALL UNNECESSARY ACTS.",
+                questions: [
+                    "Do you play the blame game?",
+                    "What do the mirrors tell you?",
+                    "If you bring everything back to yourself, taking total responsibility, what do you need to do?",
+                    "What is unnecessary?",
+                    "Where do you still over react?",
+                    "What do you need to stop doing: physically, emotionally or mentally?",
+                    "If you keep it very simple what do you need to start doing or stop doing?"
+                ]
+            },
+            3: {
+                title: "SR3: A WARRIOR IS ALWAYS READY TO MAKE HIS LAST STAND RIGHT HERE AND RIGHT NOW.",
+                questions: [
+                    "What would you do if you had no personal history?",
+                    "What would be a step into the unknown?",
+                    "What irrevocable act would give you freedom?",
+                    "What would you do if you had only one day left on earth?",
+                    "What would help to better understand any tensions?",
+                    "Which of the qualities – awareness, fear, respect, assurance – might help?",
+                    "How could you live life as an experiment?",
+                    "What do you need to stop doing?",
+                    "What would change in your life if you 'accept without accepting and believe without believing'?",
+                    "What would change if you start listening to the heart and perceiving the world and life more in terms of feeling?",
+                    "How would it be to live in the moment and on the edge?"
+                ]
+            },
+            4: {
+                title: "SR4: ONCE HE HAS ENTERED INTO BATTLE, A WARRIOR ABANDONS HIMSELF TO HIS ACTIONS BY ALLOWING HIS SPIRIT TO FLOW FREE AND CLEAR. ONLY THEN DO THE POWERS OF DESTINY GUIDE US BY PAVING THE WAY.",
+                questions: [
+                    "What would unconditional love do?",
+                    "What would your response be from the heart?",
+                    "In what way are you not fully embracing, enjoying all of life, living more in the moment?",
+                    "What if you wouldn't care about your self-image anymore?",
+                    "Are you fighting an opponent or yourself?",
+                    "If the battle is not about you winning what is it about then?",
+                    "What would you do if you would let go of all sense of pity for self or other?",
+                    "How could applying forbearance help you?",
+                    "What could you learn from losing the battle?"
+                ]
+            },
+            5: {
+                title: "SR5: WHENEVER FACED WITH IMPOSSIBLE ODDS, A WARRIOR OPENS HIMSELF UP TO THE WORLD AROUND HIM BY ALLOWING HIS MIND TO BECOME OCCUPIED WITH THE LITTLE DETAILS OF LIFE.",
+                questions: [
+                    "What possibilities open up if you would stop resisting your opponent's perception?",
+                    "How does it feel if you detach from the situation, retreat/relax, and silence your inner dialogue?",
+                    "How could you reassess the situation by fully listening with every fibre?",
+                    "What are the shortcomings of your opponent's perception?",
+                    "Choose a random object, what advice does it give you?",
+                    "What advice would you give your opponent; now apply it to yourself. What comes up?"
+                ]
+            },
+            6: {
+                title: "SR6: A WARRIOR ALWAYS COMPRESSES TIME. ANY BATTLE, NO MATTER HOW BIG OR SMALL IT MAY BE, IS A BATTLE FOR ONE'S LIFE, AND IN A BATTLE FOR ONE'S LIFE AN INSTANT BECOMES AN ETERNITY–AN ETERNITY WHICH DETERMINES THE OUTCOME OF THE BATTLE.",
+                questions: [
+                    "Where are you still wasting time?",
+                    "Where and why are you postponing action?",
+                    "Where do you lack a sense of purpose?",
+                    "What is the knowledge you believe you are being led to learn?",
+                    "Where are you not awake to seizing fleeting moment of chance?",
+                    "Is there something missing or incomplete in your life and if so, what?"
+                ]
+            },
+            7: {
+                title: "SR7: A STALKER NEVER REVEALS HIS IDENTITY, NOT EVEN TO HIMSELF.",
+                questions: [
+                    "Who do you believe you are?",
+                    "Where do you still cling to your personal history?",
+                    "Where do you take things still personally?",
+                    "Where do you take yourself too seriously?",
+                    "Where are you not cooperating intelligently with life?",
+                    "Where are you still separative instead of inclusive?",
+                    "Where is your heart not yet wide open?",
+                    "Where and why are you still goal or result oriented?",
+                    "What is your true motive?",
+                    "Are you taking each step impeccably?",
+                    "What are you in the process of learning?",
+                    "Where do you not yet acknowledge that what is happening here and now is a gift, yours for the taking?"
+                ]
+            }
+        };
+
+        let currentSection = null;
+
+        function selectSection() {
+            const select = document.getElementById('sectionSelect');
+            const sectionNum = select.value;
+            const questionDisplay = document.getElementById('questionDisplay');
+            
+            if (sectionNum && sections[sectionNum]) {
+                currentSection = sectionNum;
+                document.getElementById('sectionTitle').textContent = sections[sectionNum].title;
+                generateNewQuestion();
+                questionDisplay.style.display = 'block';
+            } else {
+                questionDisplay.style.display = 'none';
+                currentSection = null;
+            }
+        }
+
+        function generateNewQuestion() {
+            if (!currentSection || !sections[currentSection]) {
+                return;
+            }
+            
+            const questions = sections[currentSection].questions;
+            const randomIndex = Math.floor(Math.random() * questions.length);
+            const randomQuestion = questions[randomIndex];
+            
+            document.getElementById('randomQuestion').textContent = randomQuestion;
+        }
+    </script>
+</body>
+</html>
